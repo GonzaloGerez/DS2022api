@@ -245,7 +245,7 @@ public function deleteVuelo($id_vuelo){
 
 public function getAllVuelos(){
     try {
-        $vuelos = Vuelo::all();
+        $vuelos = Vuelo::with('avion','aeropuertoOrigen','aeropuertoDestino','vueloConAsientos')->get();
     } catch (\Throwable $th) {
         return response()->json([
             "message" => "Error al consultar todos los vuelos disponibles",
